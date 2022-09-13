@@ -3,22 +3,20 @@ namespace Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task;
 
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\ShowTaskRequestContract;
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Transformers\Requests\Task\ShowTaskRequestTransformerContract;
-use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\Traits\IsTaskRequestTransformer;
+use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\TaskRequestTransformer;
 
-class ShowTaskRequestTransformer implements ShowTaskRequestTransformerContract
+class ShowTaskRequestTransformer extends TaskRequestTransformer implements ShowTaskRequestTransformerContract
 {
-    use IsTaskRequestTransformer;
-
     public function fromArray(array $attributes): ShowTaskRequestContract
     {
         /** @var ShowTaskRequestContract */
         $request = app()->make(ShowTaskRequestContract::class);
 
-        return $this->setRequestCommonAttributes($request, $attributes);
+        return $this->setRequestFromAttributes($request, $attributes);
     }
 
     public function toArray(ShowTaskRequestContract $request): array
     {
-        return $this->setArrayCommonAttributes($request);
+        return $this->toArrayFromRequest($request);
     }
 }

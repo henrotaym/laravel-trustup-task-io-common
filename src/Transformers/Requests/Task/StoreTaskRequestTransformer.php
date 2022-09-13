@@ -3,9 +3,9 @@ namespace Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task;
 
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\StoreTaskRequestContract;
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Transformers\Requests\Task\StoreTaskRequestTransformerContract;
-use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\SingleTaskRequestTransformer;
+use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\TaskRequestTransformer;
 
-class StoreTaskRequestTransformer extends SingleTaskRequestTransformer implements StoreTaskRequestTransformerContract
+class StoreTaskRequestTransformer extends TaskRequestTransformer implements StoreTaskRequestTransformerContract
 {
     public function fromArray(array $attributes): StoreTaskRequestContract
     {

@@ -36,7 +36,10 @@ class TaskTransformer implements TaskTransformerContract
             ->setOptions($attributes['options'] ?? [])
             ->setUsers(collect($attributes['users'] ?? [])->map(fn(array $rawUser) => 
                 $this->userTransformer->fromArray($rawUser)
-            ));
+            ))
+            ->setAppKey($attributes['app_key'])
+            ->setModelId($attributes['model_id'])
+            ->setModelType($attributes['model_type']);
     }
 
     public function toArray(TaskContract $task): array
@@ -51,6 +54,9 @@ class TaskTransformer implements TaskTransformerContract
             'users' => $task->getUsers()->map(fn (UserContract $user) =>
                 $this->userTransformer->toArray($user)
             ),
+            'app_key' => $task->getAppKey(),
+            'model_id' => $task->getModelId(),
+            'model_type' => $task->getModelType()
         ];
     }
 }

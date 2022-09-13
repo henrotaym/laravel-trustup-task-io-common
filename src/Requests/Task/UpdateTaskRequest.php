@@ -2,9 +2,9 @@
 namespace Henrotaym\LaravelTrustupTaskIoCommon\Requests\Task;
 
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\UpdateTaskRequestContract;
-use Henrotaym\LaravelTrustupTaskIoCommon\Requests\Task\_Private\SingleTaskRequest;
+use Henrotaym\LaravelTrustupTaskIoCommon\Requests\Task\_Private\TaskRequest;
 
-class UpdateTaskRequest extends SingleTaskRequest implements UpdateTaskRequestContract
+class UpdateTaskRequest extends TaskRequest implements UpdateTaskRequestContract
 {
     
 }
