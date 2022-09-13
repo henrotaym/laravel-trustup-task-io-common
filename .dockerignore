@@ -1,0 +1,8 @@
+vendor/
+.phpunit.result.cache
+.github
+docker-compose.yml
+Dockerfile
+bash
+.env.example
+

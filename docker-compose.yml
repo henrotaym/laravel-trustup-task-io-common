@@ -1,0 +1,15 @@
+version: '3'
+services:
+  laravel-trustup-task-io-common-cli:
+    build:
+      context: .
+      target: cli
+    volumes:
+      - ./:/app
+
+  laravel-trustup-task-io-common-node:
+    build:
+      context: .
+      target: node
+    volumes:
+      - ./:/app
