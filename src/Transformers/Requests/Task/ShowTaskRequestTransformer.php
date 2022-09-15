@@ -3,9 +3,9 @@ namespace Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task;
 
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\ShowTaskRequestContract;
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Transformers\Requests\Task\ShowTaskRequestTransformerContract;
-use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\TaskRequestTransformer;
+use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\TaskUuidRequestTransformer;
 
-class ShowTaskRequestTransformer extends TaskRequestTransformer implements ShowTaskRequestTransformerContract
+class ShowTaskRequestTransformer extends TaskUuidRequestTransformer implements ShowTaskRequestTransformerContract
 {
     public function fromArray(array $attributes): ShowTaskRequestContract
     {

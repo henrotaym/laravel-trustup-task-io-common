@@ -3,9 +3,9 @@ namespace Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task;
 
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\DestroyTaskRequestContract;
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Transformers\Requests\Task\DestroyTaskRequestTransformerContract;
-use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\TaskRequestTransformer;
+use Henrotaym\LaravelTrustupTaskIoCommon\Transformers\Requests\Task\_Private\TaskUuidRequestTransformer;
 
-class DestroyTaskRequestTransformer extends TaskRequestTransformer implements DestroyTaskRequestTransformerContract
+class DestroyTaskRequestTransformer extends TaskUuidRequestTransformer implements DestroyTaskRequestTransformerContract
 {
     public function fromArray(array $attributes): DestroyTaskRequestContract
     {

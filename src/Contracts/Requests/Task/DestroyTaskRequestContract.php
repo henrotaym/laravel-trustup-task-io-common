@@ -1,9 +1,9 @@
 <?php
 namespace Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task;
 
-use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\_Private\TaskRequestContract;
+use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\_Private\TaskUuidRequestContract;
 
-interface DestroyTaskRequestContract extends TaskRequestContract
+interface DestroyTaskRequestContract extends TaskUuidRequestContract
 {
     
 }

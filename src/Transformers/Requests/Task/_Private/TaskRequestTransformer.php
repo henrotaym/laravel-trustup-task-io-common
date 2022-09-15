@@ -16,7 +16,7 @@ abstract class TaskRequestTransformer
 
     public function setRequestFromAttributes(TaskRequestContract $request, array $attributes): TaskRequestContract
     {
-        return $request->setTask($attributes['task']);
+        return $request->setTask($this->taskTransformer->fromArray($attributes));
     }
 
     public function toArrayFromRequest(TaskRequestContract $request): array

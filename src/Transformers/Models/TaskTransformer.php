@@ -50,13 +50,15 @@ class TaskTransformer implements TaskTransformerContract
             'title' => $task->getTitle(),
             'is_done' => $task->isDone(),
             'done_at' => $task->getDoneAt(),
+            'due_date' => $task->getDueDate(),
             'is_having_due_date_time' => $task->isHavingDueDateTime(),
             'users' => $task->getUsers()->map(fn (UserContract $user) =>
                 $this->userTransformer->toArray($user)
             ),
             'app_key' => $task->getAppKey(),
             'model_id' => $task->getModelId(),
-            'model_type' => $task->getModelType()
+            'model_type' => $task->getModelType(),
+            'options' => $task->getOptions()
         ];
     }
 }
