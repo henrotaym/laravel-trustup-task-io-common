@@ -46,7 +46,6 @@ interface TaskContract extends HasOptionContract
     /** @return static */
     public function setDoneAt(?Carbon $doneAt): TaskContract;
 
-    /** @return static */
     public function getDoneAt(): ?Carbon;
 
     public function getDueDate(): ?Carbon;
