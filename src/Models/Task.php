@@ -29,7 +29,7 @@ class Task implements TaskContract
     /** @return static */
     public function setModelId(int $modelId): TaskContract
     {
-        return $this->modelId = $modelId;
+        $this->modelId = $modelId;
 
         return $this;
     }

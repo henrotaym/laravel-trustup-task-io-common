@@ -8,7 +8,7 @@ class IndexTaskRequest implements IndexTaskRequestContract
 {
     protected int $modelId;
     protected string $modelType;
-    protected ?string $appKey;
+    protected ?string $appKey = null;
     protected TaskStatus $status = TaskStatus::ALL;
 
     public function getModelId(): int
@@ -43,7 +43,7 @@ class IndexTaskRequest implements IndexTaskRequestContract
     }
 
     /** @return static */
-    public function setAppKey(string $appKey): IndexTaskRequestContract
+    public function setAppKey(?string $appKey): IndexTaskRequestContract
     {
         $this->appKey = $appKey;
 
@@ -55,8 +55,11 @@ class IndexTaskRequest implements IndexTaskRequestContract
         return $this->status;
     }
 
-    public function setStatus(TaskStatus $status)
+    /** @return static */
+    public function setStatus(TaskStatus $status): IndexTaskRequestContract
     {
         $this->status = $status;
+
+        return $this;
     }
 }

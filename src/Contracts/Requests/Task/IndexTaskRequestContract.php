@@ -18,9 +18,10 @@ interface IndexTaskRequestContract
     public function getAppKey(): ?string;
 
     /** @return static */
-    public function setAppKey(string $appKey): IndexTaskRequestContract;
+    public function setAppKey(?string $appKey): IndexTaskRequestContract;
 
     public function getStatus(): TaskStatus;
 
-    public function setStatus(TaskStatus $status);
+    /** @return static */
+    public function setStatus(TaskStatus $status): IndexTaskRequestContract;
 }
