@@ -19,6 +19,8 @@ interface UserContract
     public function setFirstName(string $firstName): UserContract;
 
     public function getLastName(): string;
+
+    public function getFullName(): string;
     
     /** @return static */
     public function setLastName(string $lastName): UserContract;
@@ -26,5 +28,5 @@ interface UserContract
     /** @return static */
     public function setEmail(string $email): UserContract;
 
-    public function getEmail(): int;
+    public function getEmail(): string;
 }

@@ -10,14 +10,14 @@ class Task implements TaskContract
 {
     protected int $modelId;
     protected string $modelType;
-    protected string $appKey;
+    protected ?string $appKey = null;
     protected ?int $id = null;
     protected ?string $uuid = null;
     protected string $title;
     protected ?Carbon $doneAt = null;
-    protected Carbon $dueDate;
+    protected ?Carbon $dueDate = null;
     protected bool $havingDueDateTime = false;
-    protected Collection $users;
+    protected ?Collection $users = null;
 
     use HasOptions;
 
@@ -130,7 +130,7 @@ class Task implements TaskContract
     }
 
     /** @return static */
-    public function setDueDate(Carbon $dueDate): TaskContract
+    public function setDueDate(?Carbon $dueDate): TaskContract
     {
         $this->dueDate = $dueDate;
 

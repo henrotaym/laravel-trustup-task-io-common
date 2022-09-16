@@ -63,6 +63,11 @@ class User implements UserContract
         return $this;
     }
 
+    public function getFullName(): string
+    {
+        return "{$this->firstName} {$this->lastName}";
+    }
+
     /** @return static */
     public function setEmail(string $email): UserContract
     {
@@ -71,7 +76,7 @@ class User implements UserContract
         return $this;
     }
 
-    public function getEmail(): int
+    public function getEmail(): string
     {
         return $this->email;
     }

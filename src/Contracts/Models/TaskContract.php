@@ -51,7 +51,7 @@ interface TaskContract extends HasOptionContract
     public function getDueDate(): ?Carbon;
 
     /** @return static */
-    public function setDueDate(Carbon $dueDate): TaskContract;
+    public function setDueDate(?Carbon $dueDate): TaskContract;
 
     public function isHavingDueDateTime(): bool;
 
