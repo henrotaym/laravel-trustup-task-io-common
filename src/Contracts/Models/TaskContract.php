@@ -8,10 +8,10 @@ use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Models\Traits\HasOptionContra
 
 interface TaskContract extends HasOptionContract
 {
-    public function getModelId(): int;
+    public function getModelId(): string;
 
     /** @return static */
-    public function setModelId(int $modelId): TaskContract;
+    public function setModelId(string $modelId): TaskContract;
 
     public function getModelType(): string;
 

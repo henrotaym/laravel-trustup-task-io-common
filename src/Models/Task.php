@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class Task implements TaskContract
 {
-    protected int $modelId;
+    protected string $modelId;
     protected string $modelType;
     protected ?string $appKey = null;
     protected ?int $id = null;
@@ -21,13 +21,13 @@ class Task implements TaskContract
 
     use HasOptions;
 
-    public function getModelId(): int
+    public function getModelId(): string
     {
         return $this->modelId;
     }
 
     /** @return static */
-    public function setModelId(int $modelId): TaskContract
+    public function setModelId(string $modelId): TaskContract
     {
         $this->modelId = $modelId;
 

@@ -6,18 +6,18 @@ use Henrotaym\LaravelTrustupTaskIoCommon\Enum\Requests\Task\TaskStatus;
 
 class IndexTaskRequest implements IndexTaskRequestContract
 {
-    protected int $modelId;
+    protected string $modelId;
     protected string $modelType;
     protected ?string $appKey = null;
     protected TaskStatus $status = TaskStatus::ALL;
 
-    public function getModelId(): int
+    public function getModelId(): string
     {
         return $this->modelId;
     }
 
     /** @return static */
-    public function setModelId(int $modelId): IndexTaskRequestContract
+    public function setModelId(string $modelId): IndexTaskRequestContract
     {
         $this->modelId = $modelId;
 

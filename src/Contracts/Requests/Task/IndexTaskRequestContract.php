@@ -5,10 +5,10 @@ use Henrotaym\LaravelTrustupTaskIoCommon\Enum\Requests\Task\TaskStatus;
 
 interface IndexTaskRequestContract
 {
-    public function getModelId(): int;
+    public function getModelId(): string;
 
     /** @return static */
-    public function setModelId(int $modelId): IndexTaskRequestContract;
+    public function setModelId(string $modelId): IndexTaskRequestContract;
 
     public function getModelType(): string;
 
