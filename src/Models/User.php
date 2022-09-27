@@ -6,7 +6,7 @@ use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Models\UserContract;
 class User implements UserContract
 {
     protected int $id;
-    protected string $avatar;
+    protected ?string $avatar;
     protected string $firstName;
     protected string $lastName;
     protected string $email;
@@ -24,13 +24,13 @@ class User implements UserContract
         return $this;
     }
     
-    public function getAvatar(): string
+    public function getAvatar(): ?string
     {
         return $this->avatar;
     }
 
     /** @return static */
-    public function setAvatar(string $avatar): UserContract
+    public function setAvatar(?string $avatar): UserContract
     {
         $this->avatar = $avatar;
 

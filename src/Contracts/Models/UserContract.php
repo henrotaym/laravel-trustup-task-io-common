@@ -8,10 +8,10 @@ interface UserContract
     /** @return static */
     public function setId(int $id): UserContract;
     
-    public function getAvatar(): string;
+    public function getAvatar(): ?string;
 
     /** @return static */
-    public function setAvatar(string $avatar): UserContract;
+    public function setAvatar(?string $avatar): UserContract;
 
     public function getFirstName(): string;
 
