@@ -96,6 +96,6 @@ class IndexTaskRequest implements IndexTaskRequestContract
      */
     public function isStandardRequest(): bool
     {
-        return !$this->getAccountUuid() && $this->getProfessionalAuthorizationKey();
+        return !$this->getAccountUuid() && !$this->getProfessionalAuthorizationKey();
     }
 }
