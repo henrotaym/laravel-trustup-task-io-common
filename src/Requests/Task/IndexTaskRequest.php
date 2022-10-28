@@ -6,9 +6,11 @@ use Henrotaym\LaravelTrustupTaskIoCommon\Enum\Requests\Task\TaskStatus;
 
 class IndexTaskRequest implements IndexTaskRequestContract
 {
-    protected string $modelId;
-    protected string $modelType;
+    protected ?string $modelId = null;
+    protected ?string $modelType = null;
     protected ?string $appKey = null;
+    protected ?string $professionalAuthorizationKey = null;
+    protected ?string $accountUuid = null;
     protected TaskStatus $status = TaskStatus::ALL;
 
     public function getModelId(): string
@@ -17,7 +19,7 @@ class IndexTaskRequest implements IndexTaskRequestContract
     }
 
     /** @return static */
-    public function setModelId(string $modelId): IndexTaskRequestContract
+    public function setModelId(?string $modelId): IndexTaskRequestContract
     {
         $this->modelId = $modelId;
 
@@ -30,7 +32,7 @@ class IndexTaskRequest implements IndexTaskRequestContract
     }
 
     /** @return static */
-    public function setModelType(string $modelType): IndexTaskRequestContract
+    public function setModelType(?string $modelType): IndexTaskRequestContract
     {
         $this->modelType = $modelType;
 
@@ -46,6 +48,32 @@ class IndexTaskRequest implements IndexTaskRequestContract
     public function setAppKey(?string $appKey): IndexTaskRequestContract
     {
         $this->appKey = $appKey;
+
+        return $this;
+    }
+
+    public function getProfessionalAuthorizationKey(): ?string
+    {
+        return $this->professionalAuthorizationKey;
+    }
+
+    /** @return static */
+    public function setProfessionalAuthorizationKey(?string $professionalAuthorizationKey): IndexTaskRequestContract
+    {
+        $this->professionalAuthorizationKey = $professionalAuthorizationKey;
+
+        return $this;
+    }
+
+    public function getAccountUuid(): ?string
+    {
+        return $this->accountUuid;
+    }
+
+    /** @return static */
+    public function setAccountUuid(?string $accountUuid): IndexTaskRequestContract
+    {
+        $this->accountUuid = $accountUuid;
 
         return $this;
     }

@@ -74,7 +74,7 @@ class InstallingPackageTest extends TestCase
         $task = $this->getBasicTask();
         /** @var TaskTransformerContract */
         $transformer = $this->app->make(TaskTransformerContract::class);
-        $transformed = $transformer->toArray($task);
+        dd($transformed = $transformer->toArray($task));
 
         $retransformed = $transformer->fromArray($transformed);
 
@@ -93,6 +93,8 @@ class InstallingPackageTest extends TestCase
             ->setIsHavingDueDateTime(true)
             ->setModelId(35)
             ->setModelType('professional')
+            ->setAccountUuid('test')
+            ->setProfessionalAuthorizationKey('testastos')
             ->setOptions(['some' => ['nested' => "values"]])
             ->setTitle("Un super titre")
             ->setUsers(collect());

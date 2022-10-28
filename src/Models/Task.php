@@ -11,6 +11,8 @@ class Task implements TaskContract
     protected string $modelId;
     protected string $modelType;
     protected ?string $appKey = null;
+    protected ?string $professionalAuthorizationKey = null;
+    protected ?string $accountUuid = null;
     protected ?int $id = null;
     protected ?string $uuid = null;
     protected string $title;
@@ -56,6 +58,32 @@ class Task implements TaskContract
     public function setAppKey(string $appKey): TaskContract
     {
         $this->appKey = $appKey;
+
+        return $this;
+    }
+
+    public function getProfessionalAuthorizationKey(): ?string
+    {
+        return $this->professionalAuthorizationKey;
+    }
+
+    /** @return static */
+    public function setProfessionalAuthorizationKey(?string $professionalAuthorizationKey): TaskContract
+    {
+        $this->professionalAuthorizationKey = $professionalAuthorizationKey;
+
+        return $this;
+    }
+
+    public function getAccountUuid(): ?string
+    {
+        return $this->accountUuid;
+    }
+
+    /** @return static */
+    public function setAccountUuid(?string $accountUuid): TaskContract
+    {
+        $this->accountUuid = $accountUuid;
 
         return $this;
     }

@@ -48,7 +48,9 @@ class TaskTransformer implements TaskTransformerContract
             ))
             ->setAppKey($attributes['app_key'])
             ->setModelId($attributes['model_id'])
-            ->setModelType($attributes['model_type']);
+            ->setModelType($attributes['model_type'])
+            ->setProfessionalAuthorizationKey($attributes['professional_authorization_key'] ?? null)
+            ->setAccountUuid($attributes['account_uuid'] ?? null);
     }
 
     public function toArray(TaskContract $task): array
@@ -61,12 +63,14 @@ class TaskTransformer implements TaskTransformerContract
             'done_at' => $task->getDoneAt(),
             'due_date' => $task->getDueDate(),
             'is_having_due_date_time' => $task->isHavingDueDateTime(),
-            'users' => dd($task->getUsers())->map(fn (UserContract $user) =>
+            'users' => $task->getUsers()->map(fn (UserContract $user) =>
                 $this->userTransformer->toArray($user)
             ),
             'app_key' => $task->getAppKey(),
             'model_id' => $task->getModelId(),
             'model_type' => $task->getModelType(),
+            'professional_authorization_key' => $task->getProfessionalAuthorizationKey(),
+            'account_uuid' => $task->getAccountUuid(),
             'options' => $task->getOptions()
         ];
     }

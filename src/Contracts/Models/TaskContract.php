@@ -23,6 +23,16 @@ interface TaskContract extends HasOptionContract
     /** @return static */
     public function setAppKey(string $appKey): TaskContract;
 
+    public function getProfessionalAuthorizationKey(): ?string;
+
+    /** @return static */
+    public function setProfessionalAuthorizationKey(?string $professionalAuthorizationKey): TaskContract;
+
+    public function getAccountUuid(): ?string;
+
+    /** @return static */
+    public function setAccountUuid(?string $accountUuid): TaskContract;
+
     public function getId(): ?int;
 
     /** @return static */
