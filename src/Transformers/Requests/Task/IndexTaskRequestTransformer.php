@@ -13,9 +13,10 @@ class IndexTaskRequestTransformer extends TaskRequestTransformer implements Inde
         /** @var IndexTaskRequestContract */
         $request = app()->make(IndexTaskRequestContract::class);
 
+        if ($modelId = $attributes['model_id'] ?? null) $request->setModelId($modelId);
+        if ($modelType = $attributes['model_type'] ?? null) $request->setModelType($modelType);
+
         return $request->setAppKey($attributes['app_key'] ?? null)
-            ->setModelId($attributes['model_id'] ?? null)
-            ->setModelType($attributes['model_type'] ?? null)
             ->setProfessionalAuthorizationKey($attributes['professional_authorization_key'] ?? null)
             ->setAccountUuid($attributes['account_uuid'] ?? null)
             ->setStatus(

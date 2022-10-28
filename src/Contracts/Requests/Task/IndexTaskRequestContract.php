@@ -5,15 +5,15 @@ use Henrotaym\LaravelTrustupTaskIoCommon\Enum\Requests\Task\TaskStatus;
 
 interface IndexTaskRequestContract
 {
-    public function getModelId(): string;
+    public function getModelId(): ?string;
 
     /** @return static */
-    public function setModelId(?string $modelId): IndexTaskRequestContract;
+    public function setModelId(string $modelId): IndexTaskRequestContract;
 
-    public function getModelType(): string;
+    public function getModelType(): ?string;
 
     /** @return static */
-    public function setModelType(?string $modelType): IndexTaskRequestContract;
+    public function setModelType(string $modelType): IndexTaskRequestContract;
 
     public function getAppKey(): ?string;
 
@@ -34,4 +34,9 @@ interface IndexTaskRequestContract
 
     /** @return static */
     public function setStatus(TaskStatus $status): IndexTaskRequestContract;
+
+    /**
+     * Telling if request is using model_id and model_type.
+     */
+    public function isStandardRequest(): bool;
 }

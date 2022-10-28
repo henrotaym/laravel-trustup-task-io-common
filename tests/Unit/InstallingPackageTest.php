@@ -74,7 +74,7 @@ class InstallingPackageTest extends TestCase
         $task = $this->getBasicTask();
         /** @var TaskTransformerContract */
         $transformer = $this->app->make(TaskTransformerContract::class);
-        dd($transformed = $transformer->toArray($task));
+        $transformed = $transformer->toArray($task);
 
         $retransformed = $transformer->fromArray($transformed);
 

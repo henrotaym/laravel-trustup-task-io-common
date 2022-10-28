@@ -13,26 +13,26 @@ class IndexTaskRequest implements IndexTaskRequestContract
     protected ?string $accountUuid = null;
     protected TaskStatus $status = TaskStatus::ALL;
 
-    public function getModelId(): string
+    public function getModelId(): ?string
     {
         return $this->modelId;
     }
 
     /** @return static */
-    public function setModelId(?string $modelId): IndexTaskRequestContract
+    public function setModelId(string $modelId): IndexTaskRequestContract
     {
         $this->modelId = $modelId;
 
         return $this;
     }
 
-    public function getModelType(): string
+    public function getModelType(): ?string
     {
         return $this->modelType;
     }
 
     /** @return static */
-    public function setModelType(?string $modelType): IndexTaskRequestContract
+    public function setModelType(string $modelType): IndexTaskRequestContract
     {
         $this->modelType = $modelType;
 
@@ -89,5 +89,13 @@ class IndexTaskRequest implements IndexTaskRequestContract
         $this->status = $status;
 
         return $this;
+    }
+
+    /**
+     * Telling if request is using model_id and model_type.
+     */
+    public function isStandardRequest(): bool
+    {
+        return !$this->getAccountUuid() && $this->getProfessionalAuthorizationKey();
     }
 }
