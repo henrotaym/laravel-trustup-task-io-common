@@ -1,6 +1,7 @@
 <?php
 namespace Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task;
 
+use Illuminate\Support\Collection;
 use Henrotaym\LaravelTrustupTaskIoCommon\Enum\Requests\Task\TaskStatus;
 
 interface IndexTaskRequestContract
@@ -34,6 +35,30 @@ interface IndexTaskRequestContract
 
     /** @return static */
     public function setStatus(TaskStatus $status): IndexTaskRequestContract;
+
+    /** @return Collection<int, int> */
+    public function getUserIds(): Collection;
+
+    public function hasUserIds(): bool;
+
+    /** @return static */
+    public function addUserId(int $userId): IndexTaskRequestContract;
+
+    /**
+     * @param Collection<int, int> $userIds
+     * @return static
+     */
+    public function setUserIds(Collection $userIds): IndexTaskRequestContract;
+
+    /** @return static */
+    public function orderByOldestDueDate(bool $isOrdering = true): IndexTaskRequestContract;
+    
+    /** @return static */
+    public function orderByLatestDueDate(bool $isOrdering = true): IndexTaskRequestContract;
+
+    public function isOrderingByOldestDueDate(): bool;
+    
+    public function isOrderingByLatestDueDate(): bool;
 
     /**
      * Telling if request is using model_id and model_type.

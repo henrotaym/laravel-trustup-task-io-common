@@ -1,8 +1,9 @@
 <?php
 namespace Henrotaym\LaravelTrustupTaskIoCommon\Requests\Task;
 
-use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\IndexTaskRequestContract;
+use Illuminate\Support\Collection;
 use Henrotaym\LaravelTrustupTaskIoCommon\Enum\Requests\Task\TaskStatus;
+use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Requests\Task\IndexTaskRequestContract;
 
 class IndexTaskRequest implements IndexTaskRequestContract
 {
@@ -12,6 +13,10 @@ class IndexTaskRequest implements IndexTaskRequestContract
     protected ?string $professionalAuthorizationKey = null;
     protected ?string $accountUuid = null;
     protected TaskStatus $status = TaskStatus::ALL;
+    /** @var Collection<int, int> */
+    protected Collection $userIds;
+    protected bool $oldestDueDate = false;
+    protected bool $latestDueDate = false;
 
     public function getModelId(): ?string
     {
@@ -89,6 +94,63 @@ class IndexTaskRequest implements IndexTaskRequestContract
         $this->status = $status;
 
         return $this;
+    }
+
+    /** @return Collection<int, int> */
+    public function getUserIds(): Collection
+    {
+        return $this->userIds ??
+            $this->userIds ?? collect();
+    }
+
+    public function hasUserIds(): bool
+    {
+        return $this->getUserIds()->isNotEmpty();
+    }
+
+    /** @return static */
+    public function addUserId(int $userId): IndexTaskRequestContract
+    {
+        $this->getUserIds()->push($userId);
+
+        return $this;
+    }
+
+    /**
+     * @param Collection<int, int> $userIds
+     * @return static
+     */
+    public function setUserIds(Collection $userIds): IndexTaskRequestContract
+    {
+        $this->userIds = $userIds;
+
+        return $this;
+    }
+
+    /** @return static */
+    public function orderByOldestDueDate(bool $isOrdering = true): IndexTaskRequestContract
+    {
+        $this->oldestDueDate = $isOrdering;
+
+        return $this;
+    }
+    
+    /** @return static */
+    public function orderByLatestDueDate(bool $isOrdering = true): IndexTaskRequestContract
+    {
+        $this->latestDueDate = $isOrdering;
+
+        return $this;
+    }
+
+    public function isOrderingByOldestDueDate(): bool
+    {
+        return $this->oldestDueDate;
+    }
+    
+    public function isOrderingByLatestDueDate(): bool
+    {
+        return $this->latestDueDate;
     }
 
     /**

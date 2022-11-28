@@ -22,7 +22,10 @@ class IndexTaskRequestTransformer extends TaskRequestTransformer implements Inde
             ->setStatus(
                 TaskStatus::tryFrom($attributes['status'] ?? '') ??
                     TaskStatus::ALL
-            );
+            )
+            ->setUserIds(collect($attributes['user_ids'] ?? null))
+            ->orderByLatestDueDate($attributes['latest_due_date'] ?? false)
+            ->orderByOldestDueDate($attributes['oldest_due_date'] ?? false);
     }
 
     public function toArray(IndexTaskRequestContract $request): array
@@ -34,6 +37,9 @@ class IndexTaskRequestTransformer extends TaskRequestTransformer implements Inde
             'professional_authorization_key' => $request->getProfessionalAuthorizationKey(),
             'account_uuid' => $request->getAccountUuid(),
             'status' => $request->getStatus()->value,
+            'user_ids' => $request->getUserIds()->all(),
+            'latest_due_date' => $request->isOrderingByLatestDueDate(),
+            'oldest_due_date' => $request->isOrderingByOldestDueDate()
         ];
     }
 }
