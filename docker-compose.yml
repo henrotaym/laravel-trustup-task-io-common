@@ -1,15 +1,9 @@
-version: '3'
 services:
-  laravel-trustup-task-io-common-cli:
+  cli:
     build:
       context: .
       target: cli
+      dockerfile: Dockerfile
+    image: "laravel-trustup-task-io-common-php-local"
     volumes:
-      - ./:/app
-
-  laravel-trustup-task-io-common-node:
-    build:
-      context: .
-      target: node
-    volumes:
-      - ./:/app
+      - ./:/opt/apps/app

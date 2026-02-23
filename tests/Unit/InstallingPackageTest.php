@@ -1,6 +1,7 @@
 <?php
 namespace Henrotaym\LaravelTrustupTaskIoCommon\Tests\Unit;
 
+use PHPUnit\Framework\Attributes\Test;
 use Henrotaym\LaravelTrustupTaskIoCommon\Tests\TestCase;
 use Henrotaym\LaravelPackageVersioning\Testing\Traits\InstallPackageTest;
 use Henrotaym\LaravelTrustupTaskIoCommon\Contracts\Models\TaskContract;
@@ -22,7 +23,7 @@ class InstallingPackageTest extends TestCase
 {
     use InstallPackageTest;
 
-    /** @test */
+    #[Test]
     public function gettingMediaClient()
     {
         $this->app->make(TaskContract::class); 
@@ -49,7 +50,7 @@ class InstallingPackageTest extends TestCase
         $this->assertTrue(true);
     }
 
-    /** @test */
+    #[Test]
     public function creatingTask()
     {
         /** @var TaskContract */
@@ -68,7 +69,7 @@ class InstallingPackageTest extends TestCase
         $this->assertInstanceOf(TaskContract::class, $task);
     }
 
-    /** @test */
+    #[Test]
     public function transformingTask()
     {
         $task = $this->getBasicTask();

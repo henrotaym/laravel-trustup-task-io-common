@@ -1,30 +1,13 @@
-FROM composer:2.4.1 as deps
+FROM php:8.3-cli-alpine AS cli
 
-WORKDIR /app
+COPY --from=composer:2.5.8 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /opt/apps/app
+
+COPY composer.json composer.lock ./
+
+RUN composer install --no-scripts --no-autoloader --prefer-dist
 
 COPY . .
 
-RUN composer install
-
-# -------------------
-
-FROM php:8.1.10-cli as cli
-
-WORKDIR /tmp
-
-COPY --from=deps /app/vendor ./vendor
-
-WORKDIR /app
-
-COPY --from=deps /usr/bin/composer /usr/bin/composer
-COPY --from=deps /app .
-
-CMD ["cp", "-r", "/tmp/vendor", "/app/vendor"]
-
-# -------------------
-
-FROM node:16.17.0-alpine as node
-
-WORKDIR /app
-
-COPY ./package.json .
+RUN composer install --prefer-dist
